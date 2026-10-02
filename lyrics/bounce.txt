@@ -1,0 +1,75 @@
+# PLACEHOLDER lyrics for "Bounce" - swap in your own words any time.
+#
+# How this file works:
+#   * one lyric line per line
+#   * a blank line = a one-bar rest before the next line
+#   * [Section] headers are ignored
+#   * '#' comments are ignored
+#
+# Real timing: if you have exact timings, save them as .lrc or .srt instead and
+# pass that file to `mvfx lyrics --lyrics file.lrc` - mvfx will use your
+# timestamps (and even per-word times from enhanced LRC) instead of guessing.
+#
+# Without timings, mvfx lays each line on the beat grid of the track:
+#   115 BPM here, so a 4-beat line lasts ~2.1s and an 8-beat line ~4.2s.
+
+[Intro]
+
+[Verse 1]
+Morning light on the boulevard
+Concrete drums inside my head
+Every window throwing sparks
+Every step ahead
+
+[Pre-Chorus]
+Feel it climb up through the floor
+Turn the volume to the sun
+We were nowhere yesterday
+Now we are everyone
+
+[Chorus]
+Bounce with me, don't need a reason
+Bounce, the city's in the beat
+Bounce, we're running out of ceiling
+Bounce, bounce, bounce on the street
+
+[Verse 2]
+Saxophone above the traffic
+Golden hour on the wire
+Nothing here is going backward
+Everything is higher
+
+[Chorus]
+Bounce with me, don't need a reason
+Bounce, the city's in the beat
+Bounce, we're running out of ceiling
+Bounce, bounce, bounce on the street
+
+[Verse 3]
+Neon bleeding on the overpass
+Radio under the rain
+Every mile a little faster
+Nothing sounds the same
+
+[Chorus]
+Bounce with me, don't need a reason
+Bounce, the city's in the beat
+Bounce, we're running out of ceiling
+Bounce, bounce, bounce on the street
+
+[Bridge]
+Hold the line, hold the note
+Let it break, let it float
+One more time around the block
+One more before we stop
+
+[Chorus]
+Bounce with me, don't need a reason
+Bounce, the city's in the beat
+Bounce, we're running out of ceiling
+Bounce, bounce, bounce on the street
+
+[Outro]
+Bounce, bounce
+Bounce, bounce
+Bounce

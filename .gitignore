@@ -1,0 +1,13 @@
+# rendered output (videos, generated subtitles, caches)
+out/
+.mvfx/
+*.mp4
+*.ass
+!Bounce_174954917.mp3
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
