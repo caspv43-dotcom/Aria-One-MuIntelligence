@@ -666,20 +666,30 @@ def cmd_check(args: argparse.Namespace) -> int:
     """Flash / photosensitivity warning based on frame luminance jumps."""
     binary = ensure_ffmpeg(args.ffmpeg)
     info = probe(args.input, binary)
-    cmd = [
-        "-v",
-        "error",
-        "-i",
-        args.input,
-        "-vf",
-        "signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=-",
-        "-f",
-        "null",
-        "-",
-    ]
-    out = run(cmd, ffmpeg=binary, check=True, quiet=True)
+    # sample small and slow: only frame-average luminance is needed, and
+    # pushing 1080p through signalstats takes longer than rendering the video
+    sample_fps = 10.0
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        stats = Path(tmpdir) / "stats.txt"
+        cmd = [
+            "-v",
+            "error",
+            "-i",
+            args.input,
+            "-vf",
+            f"fps={sample_fps:g},scale=64:36,signalstats,"
+            f"metadata=print:key=lavfi.signalstats.YAVG:file={stats}",
+            "-f",
+            "null",
+            "-",
+        ]
+        run(cmd, ffmpeg=binary, check=True, quiet=True)
+        raw_stats = stats.read_text() if stats.is_file() else ""
+
     values: List[float] = []
-    for line in out.log_lines:
+    for line in raw_stats.splitlines():
         if "YAVG" in line:
             try:
                 values.append(float(line.split("=")[-1].strip()))
@@ -689,7 +699,7 @@ def cmd_check(args: argparse.Namespace) -> int:
         print("not enough frames to analyse")
         return 0
 
-    fps = info.fps or 25.0
+    fps = sample_fps
     deltas = [abs(values[i] - values[i - 1]) for i in range(1, len(values))]
     threshold = 0.10 * 255  # ~10% of the luminance range
     flashes = 0

@@ -25,6 +25,10 @@ python3 -m mvfx lyrics \
 `out/lyrics_video.mp4` — 1920×1080, the full 2:57 track, cut on the beat
 (115.4 BPM detected), with word-by-word karaoke captions.
 
+A 9:16 cut of the first minute is alongside it for Shorts / Reels / TikTok:
+`out/lyrics_video_vertical.mp4` (1080×1920, same command with
+`--size vertical --duration 60 --max-chars 20`).
+
 ### ⚠️ The words are placeholders
 
 `Bounce_174954917.mp3` is an **instrumental** production track — there are no

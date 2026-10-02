@@ -327,7 +327,10 @@ def run(
     else:
         proc = subprocess.Popen(
             cmd,
-            stdout=subprocess.PIPE,
+            # stdout must be drained or dropped: filters such as
+            # metadata=print write there, and a full pipe would block ffmpeg
+            # forever while we sit here reading stderr.
+            stdout=subprocess.DEVNULL,
             stderr=subprocess.PIPE,
             env=child_env,
             text=True,
